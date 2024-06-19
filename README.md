@@ -47,6 +47,9 @@ To start migration and load fixtures for the entity Item:
 make migrations-items
 ```
 
+Open phpMyAdmin :
+http://localhost:8080/
+
 ## Container Access
 
 ### Accessing the Bash in the PHP Container
