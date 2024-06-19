@@ -4,7 +4,7 @@ export default function Items() {
     const [data, setData] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch("https://localhost/api/items");
+            const response = await fetch("/api/item");
             const data = await response.json();
             setData(data);
         };

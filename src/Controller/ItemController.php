@@ -19,7 +19,6 @@ class ItemController extends AbstractController
     #[Route('/item/{id}', name: 'app_edit_items')]
     public function edit(int $id): Response
     {
-
         return $this->render('item/edit.html.twig', [
             'id' => $id,
         ]);
