@@ -13,20 +13,20 @@ use Symfony\Component\HttpFoundation\Request;
 #[Route('api/', name: 'api_')]
 class ApiItemController extends AbstractController
 {
-    #[Route('item', name: 'items_list', methods: ['GET'])]
+    #[Route('items', name: 'items_list', methods: ['GET'])]
     public function getAll(ItemRepository $itemRepository): Response
     {
         return $this->json($itemRepository->findAll(), Response::HTTP_OK);
     }
 
-    #[Route('item/{id}', name: 'item_fetch', methods: ['GET'])]
+    #[Route('items/{id}', name: 'item_fetch', methods: ['GET'])]
     public function getOne(
         Item $item,
     ): Response {
         return $this->json($item, Response::HTTP_OK);
     }
 
-    #[Route('item/{id}', name: 'item_put', methods: ['PUT'])]
+    #[Route('items/{id}', name: 'item_put', methods: ['PUT'])]
     public function update(
         Request $request,
         EntityManagerInterface $entityManager,
@@ -38,7 +38,7 @@ class ApiItemController extends AbstractController
         return $this->json($item, Response::HTTP_OK);
     }
 
-    #[Route('item/{id}', name: 'item_delete', methods: ['DELETE'])]
+    #[Route('items/{id}', name: 'item_delete', methods: ['DELETE'])]
     public function delete(
         Item $item,
         EntityManagerInterface $entityManager
