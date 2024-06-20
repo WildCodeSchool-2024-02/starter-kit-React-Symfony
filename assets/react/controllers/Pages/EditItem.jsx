@@ -8,7 +8,7 @@ export default function EditItem(props) {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    `https://localhost/api/item/${props.id}/edit`,
+                    `/api/items/${props.id}`,
                     {
                         method: "GET",
                     }
@@ -32,7 +32,7 @@ export default function EditItem(props) {
         e.preventDefault();
         try {
             const response = await fetch(
-                `https://localhost/api/item/${props.id}/edit`,
+                `/api/items/${props.id}`,
                 {
                     method: "PUT",
                     headers: {
@@ -54,7 +54,7 @@ export default function EditItem(props) {
         e.preventDefault();
         try {
             const response = await fetch(
-                `https://localhost/api/item/${props.id}`,
+                `/api/items/${props.id}`,
                 {
                     method: "DELETE",
                     headers: {
