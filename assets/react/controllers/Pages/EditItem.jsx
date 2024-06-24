@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function EditItem(props) {
-    const [item, setItem] = useState([]);
+    const [item, setItem] = useState({});
     const [title, setTitle] = useState("");
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -19,6 +20,7 @@ export default function EditItem(props) {
                     "Erreur lors de la récupération des données:",
                     error
                 );
+                setError(true);
             }
         };
         fetchData();
@@ -27,16 +29,12 @@ export default function EditItem(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`/api/items/${props.id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ title }),
+            const { data } = await axios.put(`/api/items/${props.id}`, {
+                title,
             });
-            if (response.ok) {
-                const updatedItem = await response.json();
-                setItem(updatedItem);
+
+            if (data) {
+                setItem(data);
             }
         } catch (error) {
             console.error("Erreur dans la mise à jour de l'item:", error);
@@ -46,17 +44,11 @@ export default function EditItem(props) {
     const handleDelete = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`/api/items/${props.id}`, {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-            if (response.ok) {
-                const data = await response.json();
-                if (data.redirectUrl) {
-                    window.location.href = data.redirectUrl;
-                }
+            const { data } = await axios.delete(`/api/items/${props.id}`);
+            console.log(data);
+
+            if (data) {
+                window.location.href = data.redirectUrl;
             }
         } catch (error) {
             console.error("Erreur lors de la suppression item:", error);
@@ -65,6 +57,10 @@ export default function EditItem(props) {
 
     if (!item) {
         return <div>Chargement...</div>;
+    }
+
+    if (error) {
+        window.location.href = "/items";
     }
 
     return (
