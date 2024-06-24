@@ -18,6 +18,6 @@
         "vite-plugin-symfony": "^6.4"
     },
     "dependencies": {
-        "@rollup/rollup-linux-arm64-musl": "^4.18.0"
+        "axios": "^1.7.2"
     }
 }
