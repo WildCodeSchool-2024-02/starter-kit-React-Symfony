@@ -44,7 +44,7 @@ make stop-dev
 To start migration and load fixtures for the entity Item:
 
 ```bash
-make migrations-items
+make migration-items
 ```
 
 Open phpMyAdmin :
