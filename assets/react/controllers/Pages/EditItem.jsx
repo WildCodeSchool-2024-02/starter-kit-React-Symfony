@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function EditItem(props) {
+    let navigate = useNavigate();
     const { id } = useParams();
     const [item, setItem] = useState({});
     const [title, setTitle] = useState("");
@@ -37,6 +38,7 @@ export default function EditItem(props) {
 
             if (data) {
                 setItem(data);
+                navigate("/items");
             }
         } catch (error) {
             console.error("Erreur dans la mise à jour de l'item:", error);
@@ -47,8 +49,8 @@ export default function EditItem(props) {
         e.preventDefault();
         try {
             const { data } = await axios.delete(`/api/items/${id}`);
-            if (data) {
-                window.location.href = data.redirectUrl;
+            if (data.deleted) {
+                navigate("/items");
             }
         } catch (error) {
             console.error("Erreur lors de la suppression item:", error);
