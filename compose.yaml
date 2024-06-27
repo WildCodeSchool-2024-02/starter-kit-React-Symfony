@@ -36,7 +36,7 @@ services:
       - .:/app
     ports:
       - "5173:5173"
-    command: sh -c "rm -rf package-lock.json node_modules && npm install && npm install @rollup/rollup-linux-arm64-musl && npm run dev"
+    command: sh -c "npm install && npm run dev"
 
   ###> doctrine/doctrine-bundle ###
   database:

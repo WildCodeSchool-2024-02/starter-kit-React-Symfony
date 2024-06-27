@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Items() {
     const [data, setData] = useState([]);
+
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch("/api/items");
-            const data = await response.json();
+            const { data } = await axios.get("/api/items");
             setData(data);
         };
         fetchData();
     }, []);
+
     return (
         <>
             <div className="pink-stripe">Page Item</div>
