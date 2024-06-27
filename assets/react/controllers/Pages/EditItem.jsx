@@ -11,7 +11,7 @@ export default function EditItem(props) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data } = await axios.get(`/api/items/${props.id}`);
+                const { data } = await axios.get(`/api/item/${id}`);
 
                 if (data) {
                     setItem(data);
@@ -31,7 +31,7 @@ export default function EditItem(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.put(`/api/items/${props.id}`, {
+            const { data } = await axios.put(`/api/items/${id}`, {
                 title,
             });
 
@@ -46,9 +46,7 @@ export default function EditItem(props) {
     const handleDelete = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.delete(`/api/items/${props.id}`);
-            console.log(data);
-
+            const { data } = await axios.delete(`/api/items/${id}`);
             if (data) {
                 window.location.href = data.redirectUrl;
             }

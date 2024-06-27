@@ -46,6 +46,6 @@ class ApiItemController extends AbstractController
         $entityManager->remove($item);
         $entityManager->flush();
 
-        return $this->json(['redirectUrl' => $this->generateUrl('app_item')], Response::HTTP_OK);
+        return $this->json(['redirectUrl' => $this->generateUrl('app_list')], Response::HTTP_OK);
     }
 }
