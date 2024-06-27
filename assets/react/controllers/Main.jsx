@@ -16,12 +16,3 @@ export default function Main() {
         </Router>
     );
 }
-
-if (document.getElementById("app")) {
-    const root = ReactDOM.createRoot(document.getElementById("app"));
-    root.render(
-        <React.StrictMode>
-            <Main />
-        </React.StrictMode>
-    );
-}
