@@ -19,7 +19,7 @@ class ApiItemController extends AbstractController
         return $this->json($itemRepository->findAll(), Response::HTTP_OK);
     }
 
-    #[Route('items/{id}', name: 'item_fetch', methods: ['GET'])]
+    #[Route('item/{id}', name: 'item_fetch', methods: ['GET'])]
     public function getOne(
         Item $item,
     ): Response {

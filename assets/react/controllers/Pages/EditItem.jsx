@@ -1,18 +1,17 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 export default function EditItem(props) {
+    const { id } = useParams();
     const [item, setItem] = useState([]);
     const [title, setTitle] = useState("");
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(
-                    `/api/items/${props.id}`,
-                    {
-                        method: "GET",
-                    }
-                );
+                const response = await fetch(`/api/item/${id}`, {
+                    method: "GET",
+                });
                 if (response.ok) {
                     const data = await response.json();
                     setItem(data);
@@ -31,16 +30,13 @@ export default function EditItem(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(
-                `/api/items/${props.id}`,
-                {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ title }),
-                }
-            );
+            const response = await fetch(`/api/items/${props.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ title }),
+            });
             if (response.ok) {
                 const updatedItem = await response.json();
                 setItem(updatedItem);
@@ -53,15 +49,12 @@ export default function EditItem(props) {
     const handleDelete = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(
-                `/api/items/${props.id}`,
-                {
-                    method: "DELETE",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
-            );
+            const response = await fetch(`/api/items/${props.id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
             if (response.ok) {
                 const data = await response.json();
                 if (data.redirectUrl) {

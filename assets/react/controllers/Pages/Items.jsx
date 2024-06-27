@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Items() {
     const [data, setData] = useState([]);
@@ -17,7 +18,7 @@ export default function Items() {
                 {data.map((item) => (
                     <div key={item.id} className="item">
                         <h3 className="item-title">
-                            <a href={`/item/${item.id}`}>{item.title}</a>
+                            <Link to={`/item/${item.id}`}>{item.title}</Link>
                         </h3>
                     </div>
                 ))}
