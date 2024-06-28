@@ -1,9 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { ThemeContext } from "../context/ThemeContext";
 
 export default function Items() {
     const [data, setData] = useState([]);
+    const { theme, setTheme } = useContext(ThemeContext);
+
+    const changeThemeHandler = () => {
+        theme === "light" ? setTheme("dark") : setTheme("light");
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -15,7 +21,9 @@ export default function Items() {
 
     return (
         <>
-            <div className="pink-stripe">Page Item</div>
+            <div className={theme === "light" ? "pink-stripe" : "dark-stripe"}>
+                Page Item
+            </div>
             <div className="white-stripe">
                 {data.map((item) => (
                     <div key={item.id} className="item">
@@ -25,6 +33,7 @@ export default function Items() {
                     </div>
                 ))}
             </div>
+            <button onClick={changeThemeHandler}>Change Theme</button>
         </>
     );
 }

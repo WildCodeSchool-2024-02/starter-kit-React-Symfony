@@ -26,6 +26,19 @@ body {
     font-size: clamp(2rem, 5vw, 3rem);
     align-items: center;
     justify-content: center;
+    background-color: var(--wild-color);
+}
+
+.dark-stripe {
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    font-family: 'Varela Round', sans-serif;
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3rem);
+    align-items: center;
+    justify-content: center;
+    background-color: #480450;
 }
 
 .white-stripe {
