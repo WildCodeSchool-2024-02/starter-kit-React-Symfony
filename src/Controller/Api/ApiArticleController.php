@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\Controller;
+namespace App\Controller\Api;
 
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
@@ -9,15 +9,20 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
 
 #[Route('/api', name: 'app_api_article')]
 class ApiArticleController extends AbstractController
 {
     #[Route('/articles', name: 'app_api_articles')]
     public function getAll(
-        ArticleRepository $articleRepository
-    ): Response {
-        return $this->json($articleRepository->findAll(), Response::HTTP_OK);
+        ArticleRepository $articleRepository,
+        SerializerInterface $serializer
+    ): JsonResponse {
+        $articles = $serializer->serialize($articleRepository->findAll(), 'json', ['groups' => 'getAll']);
+        return new JsonResponse($articles, Response::HTTP_OK, [], true);
     }
 
     #[Route('/article/{id}', name: 'app_api_article')]
