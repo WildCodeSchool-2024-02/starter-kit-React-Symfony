@@ -5,10 +5,13 @@ export default function Footer() {
     const { theme, changeThemeHandler } = useContext(ThemeContext);
 
     return (
-        <footer className={theme}>
-            <p>Copyrights</p>
+        <footer className={theme === "dark" ? "light" : "dark"}>
+            <p>Copyrights: Vince et Chris</p>
 
-            <button className={theme} onClick={changeThemeHandler}>
+            <button
+                className={theme === "dark" ? "light" : "dark"}
+                onClick={changeThemeHandler}
+            >
                 Change Theme
             </button>
         </footer>

@@ -24,29 +24,36 @@ body > :first-child {
 a {
     text-decoration: none;
     color: var(--color-thirdy);
+    cursor: pointer;
 }
 
 .dark {
     background-color: var(--color-primary);
     color: var(--color-secondary);
+    border-color: var(--color-secondary);
 }
 
 .light {
     background-color: var(--color-secondary);
     color: var(--color-primary);
+    border-color: var(--color-primary);
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    width: 100%;
 }
 
 header img {
     width: 50px;
+    padding: 0.5rem;
 }
 
 header nav ul {
+    font-size: 1.3rem;
     padding-right: 3rem;
     display: flex;
     justify-content: space-around;
@@ -60,6 +67,21 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+}
+
+main section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+}
+
+main section h1 {
+    width: 100%;
 }
 
 footer {
