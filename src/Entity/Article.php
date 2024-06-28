@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticleRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ArticleRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
@@ -12,18 +13,23 @@ class Article
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['getAllArticles', 'getOneArticle', 'getOneCategory'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['getAllArticles', 'getOneArticle', 'getOneCategory'])]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['getAllArticles', 'getOneArticle', 'getOneCategory'])]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['getAllArticles', 'getOneArticle', 'getOneCategory'])]
     private ?string $image = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
+    #[Groups(['getOneArticle'])]
     private ?Category $category = null;
 
     public function getId(): ?int
