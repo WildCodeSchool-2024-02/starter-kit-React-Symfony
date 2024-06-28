@@ -13,7 +13,6 @@ export default function Navbar() {
 
     useEffect(() => {
         const fetchData = async () => {
-            console.log(await axios.get("/api/categories"));
             const { data } = await axios.get("/api/categories");
             setCategories(data);
         };
