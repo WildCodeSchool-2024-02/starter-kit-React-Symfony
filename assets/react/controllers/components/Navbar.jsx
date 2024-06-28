@@ -1,8 +1,11 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import logo from "../assets/logo.png";
+import { ThemeContext } from "../context/ThemeContext";
 
 export default function Navbar() {
+    const { theme } = useContext(ThemeContext);
+
     const [categories, setCategories] = useState([
         { id: 1, name: "truc" },
         { id: 2, name: "truc2" },
@@ -18,7 +21,7 @@ export default function Navbar() {
     }, []);
 
     return (
-        <header>
+        <header className={theme}>
             <img src={logo} alt="logo" />
 
             <nav>

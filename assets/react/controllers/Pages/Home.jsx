@@ -3,11 +3,7 @@ import { Link } from "react-router-dom";
 import { ThemeContext } from "../context/ThemeContext";
 
 export default function Home(props) {
-    const { theme, setTheme } = useContext(ThemeContext);
-
-    const changeThemeHandler = () => {
-        theme === "light" ? setTheme("dark") : setTheme("light");
-    };
+    const { theme, changeThemeHandler } = useContext(ThemeContext);
 
     return (
         <>

@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 
 :root {
-    --wild-color: #a306b6;
-    --light: #fffbfb;
+    --color-primary: #373863;
+    --color-secondary: #797bcf;
+    --color-thirdy: #f8f5f5;
 }
 
 * {
@@ -11,9 +12,34 @@
     padding: 0;
 }
 
+body > :first-child {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-thirdy);
+}
+
+.dark {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+.light {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+}
+
 header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid --color-thirdy;
 }
 
 header img {
@@ -26,4 +52,12 @@ header nav ul {
     justify-content: space-around;
     list-style: none;
     gap: 2rem;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
