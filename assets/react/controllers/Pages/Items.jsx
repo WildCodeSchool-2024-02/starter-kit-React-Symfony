@@ -5,11 +5,7 @@ import { ThemeContext } from "../context/ThemeContext";
 
 export default function Items() {
     const [data, setData] = useState([]);
-    const { theme, setTheme } = useContext(ThemeContext);
-
-    const changeThemeHandler = () => {
-        theme === "light" ? setTheme("dark") : setTheme("light");
-    };
+    const { theme } = useContext(ThemeContext);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,7 +29,6 @@ export default function Items() {
                     </div>
                 ))}
             </div>
-            <button onClick={changeThemeHandler}>Change Theme</button>
         </>
     );
 }

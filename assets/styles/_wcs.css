@@ -7,10 +7,11 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin:0;
     background-color: var(--wild-color);
     color: var(--light);
     font-family: "Varela Round", sans-serif;
@@ -71,6 +72,7 @@ body {
   
   h1 {
     text-align: center;
+    padding: 1rem;
 }
 
 .form-container {
@@ -109,3 +111,7 @@ button {
     cursor: pointer;
 }
 
+.theme-button {
+    border-radius: 10px;
+    border: 1px solid white
+}
