@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function EditItem(props) {
+    let navigate = useNavigate();
+    const { id } = useParams();
     const [item, setItem] = useState({});
     const [title, setTitle] = useState("");
     const [error, setError] = useState(false);
@@ -9,7 +12,7 @@ export default function EditItem(props) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data } = await axios.get(`/api/items/${props.id}`);
+                const { data } = await axios.get(`/api/item/${id}`);
 
                 if (data) {
                     setItem(data);
@@ -29,12 +32,13 @@ export default function EditItem(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.put(`/api/items/${props.id}`, {
+            const { data } = await axios.put(`/api/items/${id}`, {
                 title,
             });
 
             if (data) {
                 setItem(data);
+                navigate("/items");
             }
         } catch (error) {
             console.error("Erreur dans la mise à jour de l'item:", error);
@@ -44,11 +48,9 @@ export default function EditItem(props) {
     const handleDelete = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.delete(`/api/items/${props.id}`);
-            console.log(data);
-
-            if (data) {
-                window.location.href = data.redirectUrl;
+            const { data } = await axios.delete(`/api/items/${id}`);
+            if (data.deleted) {
+                navigate("/items");
             }
         } catch (error) {
             console.error("Erreur lors de la suppression item:", error);

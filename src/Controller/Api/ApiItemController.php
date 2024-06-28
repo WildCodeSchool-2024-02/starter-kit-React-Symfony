@@ -19,7 +19,7 @@ class ApiItemController extends AbstractController
         return $this->json($itemRepository->findAll(), Response::HTTP_OK);
     }
 
-    #[Route('items/{id}', name: 'item_fetch', methods: ['GET'])]
+    #[Route('item/{id}', name: 'item_fetch', methods: ['GET'])]
     public function getOne(
         Item $item,
     ): Response {
@@ -46,6 +46,6 @@ class ApiItemController extends AbstractController
         $entityManager->remove($item);
         $entityManager->flush();
 
-        return $this->json(['redirectUrl' => $this->generateUrl('app_item')], Response::HTTP_OK);
+        return $this->json(['deleted' => true], Response::HTTP_OK);
     }
 }
