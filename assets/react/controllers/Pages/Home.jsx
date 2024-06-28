@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ThemeContext } from "../context/ThemeContext";
 
 export default function Home(props) {
-    const { theme, changeThemeHandler } = useContext(ThemeContext);
+    const { theme } = useContext(ThemeContext);
 
     return (
         <>
@@ -16,9 +16,6 @@ export default function Home(props) {
                 </h2>
                 <p>{props.slug}</p>
             </div>
-            <button className="theme-button" onClick={changeThemeHandler}>
-                Change Theme
-            </button>
         </>
     );
 }
