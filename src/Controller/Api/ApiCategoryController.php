@@ -10,12 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-
 #[Route('/api', name: 'app_api_category')]
 class ApiCategoryController extends AbstractController
 {
     #[Route('/categories', name: 'app_api_categories')]
-    public function getAllCategories(
+    public function getAll(
         CategoryRepository $categoryRepository,
     ): Response {
 

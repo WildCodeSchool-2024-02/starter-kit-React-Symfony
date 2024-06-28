@@ -10,7 +10,7 @@ logs-dev:
 stop-dev: 
 	docker compose down --remove-orphans
 
-migration-items: 
+migration: 
 	docker compose exec php php bin/console d:m:m
 	docker compose exec php php bin/console d:f:l
 

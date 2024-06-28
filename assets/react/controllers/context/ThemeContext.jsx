@@ -3,14 +3,19 @@ import { createContext, useState, useMemo, useEffect } from "react";
 const ThemeContext = createContext();
 
 function ThemeContextProvider({ children }) {
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState("dark");
+
+    const changeThemeHandler = () => {
+        theme === "light" ? setTheme("dark") : setTheme("light");
+    };
 
     const themeMemo = useMemo(
         () => ({
             theme,
             setTheme,
+            changeThemeHandler,
         }),
-        [theme, setTheme]
+        [theme, setTheme, changeThemeHandler]
     );
 
     return (
