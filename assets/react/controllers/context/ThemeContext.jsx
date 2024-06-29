@@ -6,8 +6,14 @@ function ThemeContextProvider({ children }) {
     const [theme, setTheme] = useState("dark");
 
     const changeThemeHandler = () => {
-        theme === "light" ? setTheme("dark") : setTheme("light");
+        const value = theme === "light" ? "dark" : "light";
+        setTheme(value);
+        localStorage.setItem("theme", value);
     };
+
+    useEffect(() => {
+        setTheme(localStorage.getItem("theme"));
+    }, []);
 
     const themeMemo = useMemo(
         () => ({
