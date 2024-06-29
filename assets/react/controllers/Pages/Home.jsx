@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { ThemeContext } from "../context/ThemeContext";
 import Card from "../components/Card";
 import axios from "axios";
@@ -27,9 +26,7 @@ export default function Home(props) {
 
     return (
         <section>
-            <h1 className={theme === "light" ? "pink-stripe" : "dark-stripe"}>
-                Hello Wilders
-            </h1>
+            <h1 className={theme}>Hello Wilders</h1>
 
             {articles.map((article) => (
                 <Card key={article.id} article={article} />
