@@ -1,117 +1,105 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 
 :root {
-    --wild-color : #a306b6;
-    --light: #fffbfb;
+    --color-primary: #373863;
+    --color-secondary: #8385dd;
+    --color-thirdy: #f8f5f5;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    transition: all 0.2s ease;
 }
 
-body {
-    background-color: var(--wild-color);
-    color: var(--light);
-    font-family: "Varela Round", sans-serif;
-}
-
-
-.pink-stripe {
-    height: 50vh;
-    width: 100%;
-    display: flex;
-    font-family: 'Varela Round', sans-serif;
-    text-align: center;
-    font-size: clamp(2rem, 5vw, 3rem);
-    align-items: center;
-    justify-content: center;
-    background-color: var(--wild-color);
-}
-
-.dark-stripe {
-    height: 50vh;
-    width: 100%;
-    display: flex;
-    font-family: 'Varela Round', sans-serif;
-    text-align: center;
-    font-size: clamp(2rem, 5vw, 3rem);
-    align-items: center;
-    justify-content: center;
-    background-color: #480450;
-}
-
-.white-stripe {
-    background-color: white;
-    padding: 1rem;
-    width: 100%;
-    height: 50vh;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 1rem;
-}
-
-.item {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 1rem;
-    color: var(--wild-color);
-  }
-  
-  .item-title {
-    font-size: 1.2em;
-    margin-bottom: 5px;
-  }
-
-  .item-title a {
-    text-decoration: none;
-    color: #a306b6;
-  }
-  
-  h1 {
-    text-align: center;
-    padding: 1rem;
-}
-
-.form-container {
-    background-color: white;
-    padding: 2rem;
-    margin: auto;
-    max-width: 400px;
-}
-
-form {
+body > :first-child {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
 }
 
-label {
-    font-size: 1.2rem;
-    color: var(--wild-color);
-    margin-bottom: 0.5rem;
-}
-
-input {
-    padding: 0.5rem;
-    border: 1px solid var(--wild-color);
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-button {
-    margin-top: 1rem;
-    padding: 0.75rem;
-    background-color: var(--wild-color);
-    color: var(--light);
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
+a {
+    text-decoration: none;
+    color: var(--color-thirdy);
     cursor: pointer;
 }
 
-.theme-button {
-    border-radius: 10px;
-    border: 1px solid white
+.dark {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+.light {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+}
+
+header img {
+    width: 50px;
+    padding: 0.5rem;
+}
+
+header nav ul {
+    font-size: 1.3rem;
+    padding-right: 3rem;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    gap: 2rem;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+}
+
+main section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+main section h1 {
+    width: 100%;
+}
+
+main p {
+    font-size: 1.1rem;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    font-size: 1.3rem;
+    padding: 1.5rem;
+    gap: 1rem;
+}
+
+footer button {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-thirdy);
 }

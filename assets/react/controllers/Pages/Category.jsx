@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 import Card from "../components/Card";
 
-export default function Home(props) {
+export default function Category() {
+    const { id } = useParams();
+    const [category, setCategory] = useState({ id: 1, name: "Category X" });
     const [articles, setArticles] = useState([
         {
             id: 1,
@@ -15,22 +18,21 @@ export default function Home(props) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const { data } = await axios.get("/api/articles");
+            const { data } = await axios.get(`/api/category/${id}`);
             console.log(data);
-            setArticles(data);
+            setCategory({ id: data.id, name: data.name });
+            setArticles(data.articles);
         };
         fetchData();
     }, []);
 
     return (
-        <>
-            <h1>Hello Wilders</h1>
+        <section>
+            <h1>{category.name}</h1>
 
-            <section>
-                {articles.map((article) => (
-                    <Card article={article} />
-                ))}
-            </section>
-        </>
+            {articles.map((article) => (
+                <Card key={article.id} article={article} />
+            ))}
+        </section>
     );
 }
