@@ -13,23 +13,23 @@ class Article
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['getArticles', 'getCategories'])]
+    #[Groups(['getAllArticles', 'getOneArticle', 'getOneCategory'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['getArticles', 'getCategories'])]
+    #[Groups(['getAllArticles', 'getOneArticle', 'getOneCategory'])]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Groups(['getArticles', 'getCategories'])]
+    #[Groups(['getAllArticles', 'getOneArticle', 'getOneCategory'])]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['getArticles', 'getCategories'])]
+    #[Groups(['getAllArticles', 'getOneArticle', 'getOneCategory'])]
     private ?string $image = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
-    #[Groups(['getArticles'])]
+    #[Groups(['getOneArticle'])]
     private ?Category $category = null;
 
     public function getId(): ?int

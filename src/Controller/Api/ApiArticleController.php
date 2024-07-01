@@ -17,13 +17,13 @@ class ApiArticleController extends AbstractController
     public function getAll(
         ArticleRepository $articleRepository
     ): Response {
-        return $this->json($articleRepository->findAll(), Response::HTTP_OK, [], ['groups' => 'getArticles']);
+        return $this->json($articleRepository->findAll(), Response::HTTP_OK, [], ['groups' => 'getAllArticles']);
     }
 
     #[Route('/article/{id}', name: 'app_api_article')]
     public function getOne(Article $article): Response
     {
-        return $this->json($article, Response::HTTP_OK, [], ['groups' => 'getArticles']);
+        return $this->json($article, Response::HTTP_OK, [], ['groups' => 'getOneArticle']);
     }
 
     #[Route('/article/{id}/edit', name: 'app_api_article_edit')]
@@ -38,7 +38,7 @@ class ApiArticleController extends AbstractController
         $article->setCategory($request->toArray()['category']);
         $entityManager->persist($article);
         $entityManager->flush();
-        return $this->json($article, Response::HTTP_OK, [], ['groups' => 'getArticles']);
+        return $this->json($article, Response::HTTP_OK, [], ['groups' => 'getOneArticle']);
     }
 
     #[Route('/article/{id}', name: 'app_api_article_delete', methods: ['DELETE'])]
